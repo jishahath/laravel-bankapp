@@ -35,7 +35,7 @@ class HomeController extends Controller
             ->sum('amount');
 
         $balance = $totalDeposit - $totalWithdrawal;
-        
+
         return view('home')->with('balance', $balance);
     }
 
@@ -46,7 +46,11 @@ class HomeController extends Controller
      */
     public function showTransactions()
     {
-        return view('transactions');
+        $transactions = \App\Transaction::where('user_id', Auth::user()->id)
+            ->get()
+            ->sortByDesc('created_at');
+
+        return view('transactions')->with('transactions', $transactions);
     }
 
     /**

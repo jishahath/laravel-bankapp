@@ -22,8 +22,3 @@ Route::get('/transactions', 'HomeController@showTransactions')->name('showTransa
 Route::post('/deposit', 'TransactionController@deposit')->name('deposit');
 Route::post('/withdrawal', 'TransactionController@withdraw')->name('withdrawal');
 Route::post('/transfer', 'TransactionController@transfer')->name('transfer');
-
-// reference root
-Route::get('/welcome', function () {
-    return view('welcome');
-}); 
